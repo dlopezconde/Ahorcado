@@ -12,15 +12,40 @@ import javax.swing.JButton;
  * @author xp
  */
 public class Ahorcado extends javax.swing.JFrame {
-
+//palabra oculta en el futuro la pondré con un random
+    String palabraOculta="CETYS";
+    
+    //contador para el número de fallos
+    int numeroFallos;
     /**
      * Creates new form Ahorcado
      */
     public Ahorcado() {
         initComponents();
+        
+       
     }
+    // este método recibe la letra que aparece
+    //en el botón que ha sido pulsado
+            private void chequeaLetra(String letra){
+                // guardo el texto de la pantalla en un string auxiliar
+                String PalabraConGuiones=jLabel1.getText();
+                letra=letra.toUpperCase();
+                
+                if(palabraOculta.contains(letra)){// si la letra está
+                    //desocultar la letra en la pantalla
+                    //quitar el guión
+                }
+                else{//si la letra NO está en la palabra oculta
+                    numeroFallos++;
+                    jLabel2.setText(String.valueOf(numeroFallos));
+                }
+            }
+            
+     //recibe el boton que ha sido pulsado
 private void chequeaBoton(JButton miBoton){
     miBoton.setVisible(false);
+    chequeaLetra(miBoton.getText());
 }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -60,6 +85,7 @@ private void chequeaBoton(JButton miBoton){
         jButton25 = new javax.swing.JButton();
         jButton26 = new javax.swing.JButton();
         jButton27 = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -316,6 +342,10 @@ private void chequeaBoton(JButton miBoton){
         });
         getContentPane().add(jButton27, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 800, 59, 61));
 
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel2.setText("0");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(334, 10, 50, 20));
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -504,6 +534,7 @@ private void chequeaBoton(JButton miBoton){
     private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }
