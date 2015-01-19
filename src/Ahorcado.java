@@ -30,10 +30,21 @@ public class Ahorcado extends javax.swing.JFrame {
             private void chequeaLetra(String letra){
                 // guardo el texto de la pantalla en un string auxiliar
                 String PalabraConGuiones=jLabel1.getText();
+                //cambiar la letra a mayúscula
                 letra=letra.toUpperCase();
                 
                 if(palabraOculta.contains(letra)){// si la letra está
                     //desocultar la letra en la pantalla
+                    for(int i=0;i<palabraOculta.length();i++){
+                    if(palabraOculta.charAt(i)==letra.charAt(0)){
+                        //si hemos llegado aquí es porque la letra
+                        //está en la palabra oculta
+                                palabraConGuiones(2*i)=letra;
+                                PalabraConGuiones=PalabraConGuiones.substring(0, 2*i)+
+                                        letra+PalabraConGuiones.substring(2, i+1);
+                    }
+                }
+                    jLabel1.setText(PalabraConGuiones);
                     //quitar el guión
                 }
                 else{//si la letra NO está en la palabra oculta
